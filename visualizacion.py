@@ -28,12 +28,15 @@ def main():
             k = cv2.waitKey(1) & 0xff
             if k == 27 or k == ord('q'):
                 break 
-            elif k == '0x31':
-                frame = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+            elif k == ord('1'):
+                new_frame = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+                cv2.imshow('Opcion1', new_frame)
             elif k == 2:
-                print("2")
+                new_frame = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+                binr = cv2.threshold(new_frame, 197, 255, cv2.THRESH_BINARY)[1] 
+                cv2.imshow('Opcion1', binr)
             elif k == 3:
-                print("3")
+                new_frame = frame
         cv2.imshow('Camshift',frame)  
 
         
