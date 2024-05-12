@@ -20,24 +20,30 @@ import numpy as np
 
 cap = cv2.VideoCapture(0)
 def main():
+    
+    opcion = 0
     while(1):
-        opcion = 0
         ret, frame = cap.read()
-
+        ret, frame2 = cap.read()
         if ret == True:
             k = cv2.waitKey(1) & 0xff
             if k == 27 or k == ord('q'):
                 break 
             elif k == ord('1'):
-                new_frame = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
-                cv2.imshow('Opcion1', new_frame)
-            elif k == 2:
-                new_frame = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
-                binr = cv2.threshold(new_frame, 197, 255, cv2.THRESH_BINARY)[1] 
-                cv2.imshow('Opcion1', binr)
-            elif k == 3:
-                new_frame = frame
-        cv2.imshow('Camshift',frame)  
+                opcion = 1
+            elif k == ord('2'):
+                opcion = 2
+            elif k == ord('3'):
+                opcion = 3
+        if opcion == 1:
+            frame2 = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+        if opcion == 2:
+            frame2 = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+            frame2 = cv2.threshold(frame2, 197, 255, cv2.THRESH_BINARY)[1]
+        if opcion == 3:
+            frame2 = frame
+        cv2.imshow('Opcion elegida', frame2)
+        cv2.imshow('Camara base',frame)  
 
         
     
