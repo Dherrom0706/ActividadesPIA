@@ -22,7 +22,7 @@ cap = cv2.VideoCapture(0)
 def main():
     
     opcion = 0
-    while(1):
+    while(True):
         ret, frame = cap.read()
         ret, frame2 = cap.read()
         if ret == True:
@@ -42,32 +42,11 @@ def main():
             frame2 = cv2.threshold(frame2, 197, 255, cv2.THRESH_BINARY)[1]
         if opcion == 3:
             frame2 = frame
+        
         cv2.imshow('Opcion elegida', frame2)
         cv2.imshow('Camara base',frame)  
 
-        
-    
 
-
-
-    
-def pedir_opcion():
-    print("Teclee una de las siguientes opciones:") 
-    print("1.- Se convertirá el video a escala de grises")
-    print("2.- Se convertirá el video a escala de grises y se hará una binarización")
-    print("3.- Se mostrará el video original")
-    try:
-        opcion = int(input("Opción: "))
-        while(opcion < 1 or opcion > 3):
-            opcion = input("Inserte una opción correcta: ")
-
-        return opcion
-    except Exception:
-        print("Es necesario que introduzca una opción valida")
-        return 0
-    
-    
-    
 
 if __name__ == "__main__":
     main()
