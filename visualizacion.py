@@ -27,7 +27,7 @@ def main():
         ret, frame2 = cap.read()
         if ret == True:
             k = cv2.waitKey(1) & 0xff
-            if k == 27 or k == ord('q'):
+            if k == 27 or k == ord('q') or k == ord('Q'):
                 break 
             elif k == ord('1'):
                 opcion = 1
